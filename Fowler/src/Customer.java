@@ -36,7 +36,7 @@ class Customer {
             Rental rental = enum_rentals.nextElement();
             //determine amounts for each line
 
-            thisAmount = amountFor(rental);
+            thisAmount = rental.getCharge();
 
             switch (rental.getMovie().getPriceCode()) {
                 case Movie.REGULAR -> {
@@ -53,15 +53,14 @@ class Customer {
             }
 
 
-            thisAmount = amountFor(rental);
             // add frequent renter points
             frequentRenterPoints++;
             // add bonus for a two-day new release rental
             if ((rental.getMovie().getPriceCode() == Movie.NEW_RELEASE) && rental.getDaysRented() > 1)
                 frequentRenterPoints++;
             //show figures for this rental
-            result.append("\t").append(rental.getMovie().getTitle()).append("\t").append("\t").append(rental.getDaysRented()).append("\t").append(String.valueOf(thisAmount)).append("\n");
-            totalAmount += thisAmount;
+            result.append("\t").append(rental.getMovie().getTitle()).append("\t").append("\t").append(rental.getDaysRented()).append("\t").append(rental.getCharge()).append("\n");
+            totalAmount += rental.getCharge();
         }
         //add footer lines
         result.append("Amount owed is ").append(String.valueOf(totalAmount)).append("\n");
