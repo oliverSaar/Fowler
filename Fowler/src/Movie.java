@@ -5,6 +5,8 @@ public class Movie {
     private final String title;
     private int priceCode;
 
+    private Price price;
+
 
     public Movie(String newtitle, int newpriceCode) {
         title = newtitle;
@@ -16,7 +18,7 @@ public class Movie {
     }
 
     public void setPriceCode(int arg) {
-        Price price;
+
         switch (arg) {
             case REGULAR -> price = new RegularPrice();
             case CHILDRENS -> price = new ChildrensPrice();
@@ -27,21 +29,7 @@ public class Movie {
 
 
     public double getCharge(int daysRented) {
-        double thisAmount = 0;
-        switch (getPriceCode()) {
-            case Movie.REGULAR -> {
-                thisAmount += 2;
-                if (daysRented > 2)
-                    thisAmount += (daysRented - 2) * 1.5;
-            }
-            case Movie.NEW_RELEASE -> thisAmount += daysRented * 3;
-            case Movie.CHILDRENS -> {
-                thisAmount += 1.5;
-                if (daysRented > 3)
-                    thisAmount += (daysRented - 3) * 1.5;
-            }
-        }
-        return thisAmount;
+        return price.getCharge(daysRented);
     }
 
 
@@ -50,10 +38,7 @@ public class Movie {
     }
 
     int getFrequentRenterPoints(int daysRented) {
-        if ((getPriceCode() == Movie.NEW_RELEASE) && daysRented > 1)
-            return 2;
-        else
-            return 1;
+        return price.getFrequentRenterPoints(daysRented);
     }
 
 
