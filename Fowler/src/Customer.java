@@ -10,19 +10,19 @@ class Customer {
         name = newname;
     }
 
-    ;
 
     public void addRental(Rental arg) {
         rentals.addElement(arg);
     }
 
-    ;
 
     public String getName() {
         return name;
     }
 
-    ;
+    public String getTotalCharge(){
+       return "";
+    }
 
     public String statement() {
         double totalAmount = 0;
@@ -67,9 +67,10 @@ class Customer {
             //show figures for this rental
             result.append("\t").append(rental.getMovie().getTitle()).append("\t").append("\t").append(rental.getDaysRented()).append("\t").append(rental.getCharge()).append("\n");
             totalAmount += rental.getCharge();
+
         }
         //add footer lines
-        result.append("Amount owed is ").append(String.valueOf(totalAmount)).append("\n");
+        result.append("Amount owed is ").append(getTotalCharge()).append("\n");
         result.append("You earned ").append(String.valueOf(frequentRenterPoints)).append(" frequent renter points");
         return result.toString();
     }
