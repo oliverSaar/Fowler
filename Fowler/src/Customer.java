@@ -27,13 +27,19 @@ class Customer {
     public String statement() {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
-        Enumeration<Rental> enum_rentals = rentals.elements();
+        Enumeration<Rental> rentals = this.rentals.elements();
         StringBuilder result = new StringBuilder("Rental Record for " + this.getName() + "\n");
         result.append("\t" + "Title" + "\t" + "\t" + "Days" + "\t" + "Amount" + "\n");
 
-        while (enum_rentals.hasMoreElements()) {
+        while (rentals.hasMoreElements()) {
             double thisAmount = 0;
-            Rental rental = enum_rentals.nextElement();
+            Rental rental = rentals.nextElement();
+
+            // add frequentrenterpoints
+            frequentRenterPoints += rental.getFrequentRenterPoints();
+
+            //bonus for two-day new release rental
+
             //determine amounts for each line
 
             thisAmount = rental.getCharge();
