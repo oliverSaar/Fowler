@@ -1,2 +1,3 @@
-public class Price {
+abstract class Price {
+    abstract int getPriceCode();
 }

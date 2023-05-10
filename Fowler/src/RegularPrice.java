@@ -1,2 +1,6 @@
-public class RegularPrice extends Price{
+public class RegularPrice extends Price {
+    @Override
+    int getPriceCode() {
+        return Movie.REGULAR;
+    }
 }
