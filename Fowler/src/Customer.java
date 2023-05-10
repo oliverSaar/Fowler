@@ -20,8 +20,8 @@ class Customer {
         return name;
     }
 
-    public String getTotalCharge(){
-       return "";
+    public String getTotalCharge() {
+        return "";
     }
 
     public String statement() {
@@ -36,7 +36,7 @@ class Customer {
             Rental rental = rentals.nextElement();
 
             // add frequentrenterpoints
-            frequentRenterPoints += rental.getFrequentRenterPoints();
+            frequentRenterPoints += rental.getFrequentRenterPoints(rental.getDaysRented());
 
             //bonus for two-day new release rental
 

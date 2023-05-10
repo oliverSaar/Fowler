@@ -11,6 +11,7 @@ class Rental {
         return daysRented;
     }
 
+
     public double getCharge() {
         double thisAmount = 0;
         switch (getMovie().getPriceCode()) {
@@ -34,10 +35,9 @@ class Rental {
     }
 
 
-    public int getFrequentRenterPoints() {
+    int getFrequentRenterPoints(int daysRented) {
 
-        if ((getMovie().getPriceCode() == Movie.NEW_RELEASE) && getDaysRented() > 1)
-            return 1;
-        return 0;
+        return this.movie.getFrequentRenterPoints(daysRented);
+
     }
 }
